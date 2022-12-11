@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 import categoriesRoutes from "./routes/categoriesRoutes.js"
+import gamesRoutes from './routes/gamesRoutes.js'
 
 const app = express();
 
@@ -11,6 +12,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use(categoriesRoutes);
+app.use(gamesRoutes);
 
 const port = process.env.PORT || 400;
 
