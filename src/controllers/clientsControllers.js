@@ -8,12 +8,12 @@ export const GetClients = async (req, res) => {
     try{
 
         if(!cpf){
-            const clients = await connection.query(`SELECT * FROM customers;`);
+            const clients = await connection.query(`SELECT id, name, phone, cpf, birthday::text FROM customers;`);
 
             return res.send(clients.rows)
 
         } else {
-            const clientsSelected = await connection.query(`SELECT * FROM customers WHERE cpf LIKE $1;`, [cpf + "%"]);
+            const clientsSelected = await connection.query(`SELECT id, name, phone, cpf, birthday::text  FROM customers WHERE cpf LIKE $1;`, [cpf + "%"]);
 
             return res.send(clientsSelected.rows)
 
